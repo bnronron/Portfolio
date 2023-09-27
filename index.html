@@ -77,7 +77,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="about-me pt-4 pt-md-0">
-                                    <p class="lead" id="about-text">
+                                    <p class="s-description text-center" id="about-text">
                                     </p>
                                 </div>
                             </div>
@@ -88,44 +88,28 @@
         </div>
     </section>
     <script>
-        const aboutText = [
-            "Third year computer science student in The Hebrew University Of Jerusalem.",
-            "Aiming for a low-level || Backend student position, as a Software Engineer."
-        ];
+        // Text to be typed
+        const aboutText = "Third year computer science student in The Hebrew University Of Jerusalem. Aiming for a low-level || Backend student position, as a Software Engineer.";
     
         // Speed of typing in milliseconds per character
         const typingSpeed = 40;
+    
         // Get the paragraph element where the text will be typed
         const aboutMeParagraph = document.getElementById("about-text");
     
+        let charIndex = 0;
+    
         function typeText() {
-            let lineIndex = 0;
-            let charIndex = 0;
-    
-            function addNextChar() {
-                if (lineIndex < aboutText.length) {
-                    const currentLine = aboutText[lineIndex];
-                    if (charIndex < currentLine.length) {
-                        aboutMeParagraph.textContent += currentLine[charIndex];
-                        charIndex++;
-                        setTimeout(addNextChar, typingSpeed);
-                    } else {
-                        // Move to the next line
-                        aboutMeParagraph.innerHTML += '<br>';
-                        charIndex = 0;
-                        lineIndex++;
-                        setTimeout(addNextChar, typingSpeed);
-                    }
-                }
+            if (charIndex < aboutText.length) {
+                aboutMeParagraph.textContent += aboutText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, typingSpeed);
             }
-    
-            addNextChar();
         }
     
         // Start typing when the page loads
         window.addEventListener("load", typeText);
     </script>
-    
     
     <!-- End About Section -->
 
@@ -172,9 +156,6 @@
                     <div class="title-box text-center">
                         <h3 class="title-a">
                             Skills </h3>
-                        <!--                        <p class="subtitle-a">-->
-                        <!--                            Main Skills-->
-                        <!--                        </p>-->
                         <div class="line-mf"></div>
                     </div>
                 </div>
@@ -191,8 +172,8 @@
                             <h2 class="s-title">Python</h2>
                             <p class="s-description text-center">
                                 Advanced Python development:
-                                Backend, Pygame/Tkinter, web (Flask),
-                                image processing and more
+                                ML, Pygame/Tkinter, DataFrames,
+                                pandas, image processing and more
                             </p>
                         </div>
                     </div>
