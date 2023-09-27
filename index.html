@@ -77,9 +77,9 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="about-me pt-4 pt-md-0">
-                                    <p class="lead">
-                                        Third year computer science student in The Hebrew University Of Jerusalem.
-                                        Aiming for a low-level || Backend student position, as a Software Engineer.
+                                    <p class="lead" id="about-text">
+                                        <!-- Third year computer science student in The Hebrew University Of Jerusalem.<br> -->
+                                        <!-- Aiming for a low-level || Backend student position, as a Software Engineer. -->
                                     </p>
                                 </div>
                             </div>
@@ -89,6 +89,29 @@
             </div>
         </div>
     </section>
+    <script>
+        // Text to be typed
+        const aboutText = "Third year computer science student in The Hebrew University Of Jerusalem. Aiming for a low-level || Backend student position, as a Software Engineer.";
+    
+        // Speed of typing in milliseconds per character
+        const typingSpeed = 50;
+    
+        // Get the paragraph element where the text will be typed
+        const aboutMeParagraph = document.getElementById("about-text");
+    
+        let charIndex = 0;
+    
+        function typeText() {
+            if (charIndex < aboutText.length) {
+                aboutMeParagraph.textContent += aboutText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, typingSpeed);
+            }
+        }
+    
+        // Start typing when the page loads
+        window.addEventListener("load", typeText);
+    </script>
     <!-- End About Section -->
 
 
