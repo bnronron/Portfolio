@@ -88,31 +88,45 @@
         </div>
     </section>
     <script>
-        // Text to be typed
-        const aboutText = "Third year computer science student in The Hebrew University Of Jerusalem.\n" +
-                         "Aiming for a low-level || Backend student position, as a Software Engineer.";
+        // Array of text lines
+        const aboutText = [
+            "Third year computer science student in The Hebrew University Of Jerusalem.",
+            "Aiming for a low-level || Backend student position, as a Software Engineer."
+        ];
+    
         // Speed of typing in milliseconds per character
         const typingSpeed = 40;
         // Get the paragraph element where the text will be typed
         const aboutMeParagraph = document.getElementById("about-text");
     
         function typeText() {
+            let lineIndex = 0;
             let charIndex = 0;
-            const textArray = aboutText.split('');
     
             function addNextChar() {
-                if (charIndex < textArray.length) {
-                    aboutMeParagraph.textContent += textArray[charIndex];
-                    charIndex++;
-                    setTimeout(addNextChar, typingSpeed);
+                if (lineIndex < aboutText.length) {
+                    const currentLine = aboutText[lineIndex];
+                    if (charIndex < currentLine.length) {
+                        aboutMeParagraph.textContent += currentLine[charIndex];
+                        charIndex++;
+                        setTimeout(addNextChar, typingSpeed);
+                    } else {
+                        // Move to the next line
+                        aboutMeParagraph.innerHTML += '<br>';
+                        charIndex = 0;
+                        lineIndex++;
+                        setTimeout(addNextChar, typingSpeed);
+                    }
                 }
             }
     
             addNextChar();
         }
+    
         // Start typing when the page loads
         window.addEventListener("load", typeText);
     </script>
+    
     
     <!-- End About Section -->
 
